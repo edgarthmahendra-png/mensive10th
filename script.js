@@ -162,13 +162,13 @@ document.querySelectorAll("[data-back='hub']").forEach(btn => {
 });
 
 /* =====================================================
-   MUSIC PLAYER
+   MUSIC PLAYER (SUDAH DISESUAIKAN PATH NAMA FILE)
 ===================================================== */
 const tracks = [
   { title: "Akad", artist: "Payung Teduh", file: "image/Akad.mp3" },
   { title: "Panasea", artist: "Rumah Sakit", file: "image/Panasea.mp3" },
   { title: "Kita Lewati Berdua", artist: "Overnight", file: "image/Kita Lewati Berdua.mp3" },
-  { title: "Tunggu Aku di Jakarta", artist: "Sheila On 7", file: "image/Tunggu Aku di Jakarta.mp3" },
+  { title: "Tunggu Aku di Jakarta", artist: "Sheila On 7", file: "image/Tunggu Aku di lakarta.mp3" },
   { title: "Hanya Untukmu", artist: "Ten2Five", file: "image/Hanya Untukmu.mp3" }
 ];
 
@@ -252,16 +252,16 @@ function formatTime(sec) {
 }
 
 /* =====================================================
-   ALBUM
+   ALBUM (SUDAH DISESUAIKAN PATH NAMA FILE)
 ===================================================== */
 const albumItems = [
-  { type: "image", file: "image/Dino.jpeg", title: "Dino Jakaltim Jaktim Kaltim", caption: "HAHAHA AWAL AWAL PAP PAP NIH UHUY:V" },
-  { type: "image", file: "image/Chat.jpeg", title: "Apa apa", caption: "Bilang aje nape kalo kamu mau sama ADAM ADAM itu beyy" },
+  { type: "image", file: "image/dino.jpeg", title: "Dino Jakaltim Jaktim Kaltim", caption: "HAHAHA AWAL AWAL PAP PAP NIH UHUY:V" },
+  { type: "image", file: "image/chat.jpeg", title: "Apa apa", caption: "Bilang aje nape kalo kamu mau sama ADAM ADAM itu beyy" },
   { type: "image", file: "image/190925.jpeg", title: "19.09.25", caption: "Apa nih, oh pas mengajak pacaran ye?? Alamak gacor betul wakk" },
-  { type: "image", file: "image/Freak chat.jpeg", title: "Freak Chat", caption: "WTFFF, INI PAS SESI AKU NGAJAK KAMU PACARAN BUKAN BEY??? HAH PLENGER COKKKKK baru beberapa hari anjirr woilah aku masih malu bey jujur tapi masuk album ini HAHAHAAHAAHAHH BODOAMAT AKU PLENGERRRR" },
+  { type: "image", file: "image/freak chat.jpeg", title: "Freak Chat", caption: "WTFFF, INI PAS SESI AKU NGAJAK KAMU PACARAN BUKAN BEY??? HAH PLENGER COKKKKK baru beberapa hari anjirr woilah aku masih malu bey jujur tapi masuk album ini HAHAHAAHAAHAHH BODOAMAT AKU PLENGERRRR" },
   { type: "image", file: "image/pasang preset.jpeg", title: "Preset cok", caption: "Oh pasang preset? 64gb itu ye yang mau pasang preset? astaga lupa ey kirain fans kemain mah ternyata PACARKU COK anjay kelass" },
-  { type: "image", file: "image/Sv kizu.jpeg", title: "Kizu Nak Di Save", caption: "Minta di save apa minta hatiku ini kak? kakak panitia? lupain aja yang di coret-_" },
-  { type: "video", file: "image/Mukbang.mp4", title: "Mukbang", caption: "Dari banyaknya rec roblox kita bey, ini yang abadi HAHAHAAH bismillah14" }
+  { type: "image", file: "image/sv kizu.jpeg", title: "Kizu Nak Di Save", caption: "Minta di save apa minta hatiku ini kak? kakak panitia? lupain aja yang di coret-_" },
+  { type: "video", file: "image/mukbang.mp4", title: "Mukbang", caption: "Dari banyaknya rec roblox kita bey, ini yang abadi HAHAHAAH bismillah14" }
 ];
 
 function renderAlbum() {
