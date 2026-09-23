@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 Months — Mahen & Shayla</title>
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Library Konfeti untuk Secret Room -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+  <!-- =========================
+       PORTRAIT WARNING
+  ========================== -->
+  <div id="portrait-warning">
+    <div class="warning-box">
+      <div class="warning-icon">↔</div>
+      <h2>Turn your phone sideways</h2>
+      <p>This little world is made for landscape.</p>
+    </div>
+  </div>
+
+
+  <!-- =========================
+       GLOBAL AUDIO
+  ========================== -->
+  <audio id="global-audio" preload="metadata"></audio>
+
+
+  <!-- =========================
+       TOAST
+  ========================== -->
+  <div id="notification-toast">
+    <span id="toast-message"></span>
+  </div>
+
+
+  <!-- =========================
+       MAIN CONTAINER
+  ========================== -->
+  <main class="landscape-container">
+
+
+    <!-- =========================
+         LANDING
+    ========================== -->
+    <section id="screen-landing" class="screen active">
+
+      <div class="opening-card" id="opening-card">
+
+        <p class="small-label">A LITTLE SOMETHING FOR YOU</p>
+
+        <h1 id="opening-title">
+          Hey, Bebey.
+        </h1>
+
+        <p id="opening-text">
+          Before you enter, tell me your name.
+        </p>
+
+        <div class="name-form">
+          <input
+            type="text"
+            id="user-name-input"
+            placeholder="your name..."
+            maxlength="20"
+            autocomplete="off"
+          >
+
+          <button id="btn-submit-name">
+            Enter
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         HUB
+    ========================== -->
+    <section id="screen-hub" class="screen">
+
+      <header class="hub-header">
+
+        <div>
+          <p class="small-label">WELCOME BACK</p>
+
+          <h1>
+            <span id="display-user-name">Bebey</span>'s Little World
+          </h1>
+
+          <!-- COUNTDOWN COUNTER -->
+          <p class="together-timer" id="together-timer" style="font-size: 0.85rem; opacity: 0.8; margin-top: 4px;">
+            Together for: <span id="timer-text">Calculating...</span>
+          </p>
+        </div>
+
+        <div class="room-counter">
+          <strong id="rooms-discovered-count">0</strong>
+          <span>/ 5 RUANGAN</span>
+        </div>
+
+      </header>
+
+
+      <div class="room-grid">
+
+        <!-- ALBUM -->
+        <button class="room-card" data-room="album">
+          <span class="room-number">01</span>
+          <div class="room-icon">📸</div>
+          <h2>Album</h2>
+          <p>little pieces of us</p>
+          <span id="badge-album" class="room-badge">OPEN</span>
+        </button>
+
+
+        <!-- MUSIC -->
+        <button class="room-card" data-room="player">
+          <span class="room-number">02</span>
+          <div class="room-icon">🎧</div>
+          <h2>Music</h2>
+          <p>songs that remind me of you</p>
+          <span id="badge-player" class="room-badge">OPEN</span>
+        </button>
+
+
+        <!-- GAME -->
+        <button class="room-card" data-room="game">
+          <span class="room-number">03</span>
+          <div class="room-icon">🎮</div>
+          <h2>Game</h2>
+          <p>good luck, you'll need it</p>
+          <span id="badge-game" class="room-badge">OPEN</span>
+        </button>
+
+
+        <!-- LETTERS -->
+        <button class="room-card" data-room="letters">
+          <span class="room-number">04</span>
+          <div class="room-icon">💌</div>
+          <h2>Letters</h2>
+          <p>open when you need me</p>
+          <span id="badge-letters" class="room-badge">OPEN</span>
+        </button>
+
+
+        <!-- ARCHIVE -->
+        <button class="room-card" data-room="archive">
+          <span class="room-number">05</span>
+          <div class="room-icon">📁</div>
+          <h2>Archive</h2>
+          <p>how we got here</p>
+          <span id="badge-archive" class="room-badge">OPEN</span>
+        </button>
+
+
+        <!-- SECRET -->
+        <button class="room-card secret-card" data-room="final">
+          <span class="room-number">06</span>
+          <div class="room-icon">🔒</div>
+          <h2>Secret</h2>
+          <p id="final-card-sub">locked for now</p>
+          <span id="badge-final" class="room-badge">LOCKED</span>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ALBUM
+    ========================== -->
+    <section id="room-album" class="screen room">
+      <div class="room-header">
+        <button class="back-button" data-back="hub">← Back</button>
+        <div>
+          <p class="small-label">ROOM 01</p>
+          <h1>Our Little Album</h1>
+        </div>
+      </div>
+
+      <div id="album-grid" class="album-grid"></div>
+    </section>
+
+
+    <!-- =========================
+         PHOTO MODAL
+    ========================== -->
+    <div id="photo-modal" class="modal">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close">×</button>
+        <img id="modal-img" alt="Memory">
+        <video id="modal-video" controls playsinline>
+          <source src="" type="video/mp4">
+        </video>
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <p id="modal-caption"></p>
+        </div>
+        <div class="modal-navigation">
+          <button id="modal-prev">←</button>
+          <button id="modal-next">→</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- =========================
+         MUSIC
+    ========================== -->
+    <section id="room-player" class="screen room">
+      <div class="room-header">
+        <button class="back-button" data-back="hub">← Back</button>
+        <div>
+          <p class="small-label">ROOM 02</p>
+          <h1>Our Soundtrack</h1>
+        </div>
+      </div>
+
+      <div class="music-layout">
+        <div class="player-card">
+          <div class="cd-disc" id="cd-disc">♪</div>
+          <h2 id="current-song-title">Akad</h2>
+          <p id="current-artist">Payung Teduh</p>
+
+          <div class="progress-container" id="progress-container">
+            <div id="progress-bar"></div>
+          </div>
+
+          <div class="time-row">
+            <span id="curr-time">0:00</span>
+            <span id="dur-time">0:00</span>
+          </div>
+
+          <div class="player-controls">
+            <button id="btn-prev-track">⏮</button>
+            <button id="btn-play-pause">▶</button>
+            <button id="btn-next-track">⏭</button>
+          </div>
+
+          <div class="volume-control">
+            <span>🔊</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.8">
+          </div>
+        </div>
+
+        <div class="playlist-card">
+          <h2>Playlist</h2>
+          <div id="playlist"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         GAME
+    ========================== -->
+    <section id="room-game" class="screen room">
+      <div class="room-header">
+        <button id="btn-game-exit" class="back-button">← Back</button>
+        <div>
+          <p class="small-label">ROOM 03</p>
+          <h1 id="game-level-title">Klik Aku</h1>
+        </div>
+        <div id="game-level-indicator">1 / 5</div>
+      </div>
+
+      <div id="game-stage" class="game-stage"></div>
+
+      <div id="bot-exit-modal" class="modal">
+        <div class="modal-box">
+          <h2>Eh mau pergi?</h2>
+          <p>Jangan kabur dulu woi 😭 Minta maap dulu ganjel kening di lantai!</p>
+          <div class="modal-actions">
+            <button id="btn-bot-stay">Ampun, Stay</button>
+            <button id="btn-bot-leave">Kabur</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         LETTERS
+    ========================== -->
+    <section id="room-letters" class="screen room">
+      <div class="room-header">
+        <button class="back-button" data-back="hub">← Back</button>
+        <div>
+          <p class="small-label">ROOM 04</p>
+          <h1>Open When...</h1>
+        </div>
+      </div>
+
+      <div id="envelopes-grid" class="envelopes-grid"></div>
+
+      <div id="letter-modal" class="modal">
+        <div class="modal-box letter-box">
+          <button id="letter-modal-close" class="modal-close">×</button>
+          <span id="letter-modal-tag"></span>
+          <p id="letter-modal-text"></p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         ARCHIVE
+    ========================== -->
+    <section id="room-archive" class="screen room">
+      <div class="room-header">
+        <button class="back-button" data-back="hub">← Back</button>
+        <div>
+          <p class="small-label">ROOM 05</p>
+          <h1>Our Archive</h1>
+        </div>
+      </div>
+
+      <div class="archive-layout">
+        <aside id="chapter-list" class="chapter-list"></aside>
+        <article class="archive-file">
+          <div class="file-top">
+            <span>ARCHIVE FILE</span>
+            <span>10M</span>
+          </div>
+          <h2 id="archive-file-title">Select a chapter</h2>
+          <div id="archive-content-area">
+            <p>Pick one of the chapters on the left.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         SECRET / FINAL
+    ========================== -->
+    <section id="room-final" class="screen room secret-room">
+      <div class="room-header">
+        <button class="back-button" data-back="hub">← Back</button>
+        <div>
+          <p class="small-label">SECRET ROOM</p>
+          <h1>For You.</h1>
+        </div>
+      </div>
+
+      <div class="secret-content">
+        <div class="secret-video-box">
+          <video id="secret-video" playsinline preload="metadata" controls>
+            <source src="image/video.shayla.mp4" type="video/mp4">
+          </video>
+          <div id="video-overlay-play" class="video-overlay">
+            <button id="btn-play-secret-video">▶ Play</button>
+          </div>
+        </div>
+
+        <div class="secret-text">
+          <p class="small-label">19 · 09 · 2026</p>
+          <h2>Ten months.</h2>
+          <p id="sequence-text">And somehow, we're still here.</p>
+          <blockquote id="final-quote">“Thank you for staying.”</blockquote>
+        </div>
+      </div>
+
+      <button class="back-button secret-back" data-back="hub">
+        ← Back to our little world
+      </button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
